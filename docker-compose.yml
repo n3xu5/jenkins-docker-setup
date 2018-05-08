@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    jenkins:
+        container_name: jenkins
+        image: jenkins/jenkins:lts
+        working_dir: /var/www
+        ports:
+            - "10010:50000"
+            - "10011:8080"
+        volumes:
+            - jenkins_home:/var/jenkins_home
+        networks:
+            - backend
+
+volumes:
+    jenkins_home:
+
+networks:
+    backend:
+        external: true
